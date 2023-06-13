@@ -1,0 +1,28 @@
+.c-header {
+  background-color: #ddd;
+  padding: 1.5rem 0;
+
+  // Logo
+
+  // Menu
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin-right: 1rem;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  a {
+    font-weight: 700;
+    color: #181a18;
+  }
+}

@@ -1,0 +1,24 @@
+// Settings
+@import "settings/settings.images";
+@import "settings/settings.project";
+
+// Vendors
+@import "../../node_modules/bootstrap/scss/bootstrap-grid";
+
+// Elements
+@import "elements/elements.page";
+@import "elements/elements_headings";
+@import "elements/elements.paragraphs";
+
+// Components
+@import "components/components.buttons";
+@import "components/components.footer";
+@import "components/components.header";
+@import "components/components.products";
+
+// Blocks
+@import "blocks/blocks.columns";
+@import "blocks/blocks.cta";
+@import "blocks/blocks.editor";
+@import "blocks/blocks.hero";
+@import "blocks/blocks.image-text";
