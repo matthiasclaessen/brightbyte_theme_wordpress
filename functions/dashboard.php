@@ -4,7 +4,7 @@
  * Removing Dashboard Widgets
  */
 
-function remove_dashboard_widgets()
+function remove_dashboard_widgets(): void
 {
     // Remove 'Welcome' Panel
     remove_action('welcome_panel', 'wp_welcome_panel');
@@ -40,14 +40,14 @@ add_action('admin_init', 'remove_dashboard_widgets');
  * Add Custom Dashboard Widget 'Website Info'
  */
 
-function dashboard_widget_website_info()
+function dashboard_widget_website_info(): void
 {
     global $wp_meta_boxes;
 
     wp_add_dashboard_widget('dashboard_widget_website_info', 'Website Information', 'custom_dashboard_widget_website_info');
 }
 
-function custom_dashboard_widget_website_info()
+function custom_dashboard_widget_website_info(): void
 {
 ?>
     <ul>

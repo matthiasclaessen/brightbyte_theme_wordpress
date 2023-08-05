@@ -4,14 +4,14 @@
  * Remove Comments From Backend Menu
  */
 
-function remove_admin_menus()
+function remove_admin_menus(): void
 {
     remove_menu_page('edit-comments.php');
 }
 
 add_action('admin_init', 'remove_admin_menus');
 
-function remove_comments_topbar()
+function remove_comments_topbar(): void
 {
     global $wp_admin_bar;
     $wp_admin_bar->remove_menu('comments');
@@ -19,7 +19,7 @@ function remove_comments_topbar()
 
 add_action('wp_before_admin_bar_render', 'remove_comments_topbar');
 
-function remove_comment_support()
+function remove_comment_support(): void
 {
     remove_post_type_support('post', 'comments');
     remove_post_type_support('page', 'comments');
@@ -31,7 +31,7 @@ add_action('init', 'remove_comment_support', 100);
  * Disable The Emoji's
  */
 
-function disable_emojis()
+function disable_emojis(): void
 {
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('admin_print_scripts', 'print_emoji_detection_script');
@@ -48,7 +48,7 @@ add_action('init', 'disable_emojis');
  * Delete This If You Don't Want To Use The Embed Options In WordPress
  */
 
-function my_deregister_script()
+function my_deregister_script(): void
 {
     wp_deregister_script('wp-embed');
 }

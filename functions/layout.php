@@ -4,12 +4,12 @@
  * Add base.php File
  */
 
-function custom_template_path()
+function brightbyte_template_path()
 {
     return Custom_Wrapping::$main_template;
 }
 
-function custom_template_base()
+function brightbyte_template_base(): string
 {
     return Custom_Wrapping::$base;
 }
@@ -18,9 +18,9 @@ class Custom_Wrapping
 {
     static $main_template;
 
-    static $base;
+    static string $base;
 
-    static function wrap($template)
+    static function wrap($template): string
     {
         self::$main_template = $template;
         self::$base = substr(basename(self::$main_template), 0, -4);

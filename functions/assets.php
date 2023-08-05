@@ -1,6 +1,6 @@
 <?php
 
-function custom_styles_and_scripts()
+function custom_styles_and_scripts(): void
 {
     // Include CSS File To Header With Cache Buster
     $cacheBuster = filemtime(get_template_directory() . '/build/css/main.css');

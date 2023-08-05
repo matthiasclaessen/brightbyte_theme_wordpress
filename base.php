@@ -21,7 +21,7 @@
 <body <?php body_class('custom-theme'); ?>>
 <?php get_template_part('templates/core/header'); ?>
 <main role="main">
-    <?php include custom_template_path(); ?>
+    <?php include brightbyte_template_path(); ?>
 </main>
 <?php get_template_part('templates/core/footer'); ?>
 <?php wp_footer(); ?>

@@ -50,7 +50,7 @@ usort($custom_blocks, function ($a, $b) {
  * Create Custom Blocks
  */
 
-function custom_acf_init()
+function custom_acf_init(): void
 {
     if (function_exists('acf_register_block_type')) {
         global $custom_blocks;
@@ -79,7 +79,7 @@ add_action('acf/init', 'custom_acf_init');
  * Create Custom Block Category
  */
 
-function custom_block_categories($categories, $post)
+function custom_block_categories($categories, $post): array
 {
     return array_merge(
         $categories,
@@ -98,7 +98,7 @@ add_filter('block_categories', 'custom_block_categories', 10, 2);
  * Create Custom Block Render Callback
  */
 
-function custom_block_render_callback($block)
+function custom_block_render_callback($block): void
 {
     $name = str_replace('acf/', '', $block['name']);
 
@@ -111,13 +111,13 @@ function custom_block_render_callback($block)
  * Enable Only Custom Blocks
  */
 
-function allow_block_types($allowed_block_types)
+function allow_block_types($allowed_block_types): array
 {
     $allowed_block_types = array();
     global $custom_blocks;
 
     foreach ($custom_blocks as $custom_block) {
-        array_push($allowed_block_types, 'acf/' . $custom_block['name']);
+        $allowed_block_types[] = 'acf/' . $custom_block['name'];
     }
 
     return $allowed_block_types;

@@ -4,7 +4,7 @@
  * Remove Default WP Posttype
  */
 
-function remove_default_post_type()
+function remove_default_post_type(): void
 {
     remove_menu_page('edit.php');
     remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=category');
@@ -16,7 +16,7 @@ add_action('admin_menu', 'remove_default_post_type');
  * Register CPT Products
  */
 
-function add_cpt_products()
+function add_cpt_products(): void
 {
     $labels = array(
         'name' => 'Products',
@@ -79,7 +79,7 @@ add_action('init', 'add_cpt_products', 0);
  * Register Taxonomy Kind
  */
 
-function add_tax_kind()
+function add_tax_kind(): void
 {
     register_taxonomy(
         'tax-products-kind',

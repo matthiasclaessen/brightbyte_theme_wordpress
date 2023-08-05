@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-auto">
-                <a href="<?= get_home_url(); ?>" class="c-logo" title="Home">Base Theme</a>
+                <a href="<?= get_home_url(); ?>" class="c-logo" title="Home">BrightByte Theme</a>
             </div>
             <div class="col-auto">
                 <nav role="navigation" class="c-navigation">
