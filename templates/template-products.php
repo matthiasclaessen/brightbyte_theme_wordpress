@@ -9,14 +9,45 @@ $terms_kind = get_terms(array(
     'parent' => 0
 ));
 
+// Get Data From URL For Filtering
+$kind_filter = false;
+
+if (!empty($_GET['kind'])) {
+    $kind_filter = filter_var($_GET['kind']);
+}
+
 // Query For Results
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 $arguments = array(
     'post_type' => 'cpt-products',
     'posts_per_page' => -1,
+    'paged' => $paged,
     'meta_key' => 'product_name',
     'orderby' => 'meta_value',
     'order' => 'ASC',
+    'tax_query' => array(
+        'relation' => 'AND'
+    ),
 );
+
+// Filter Query
+$tax_query = [];
+
+if ($kind_filter) {
+    array_push(
+        $tax_query,
+        array(
+            'taxonomy' => 'tax-products-kind',
+            'field' => 'term_id',
+            'terms' => $kind_filter
+        )
+    );
+}
+
+if (!empty($tax_query)) {
+    $arguments['tax_query'] = $tax_query;
+}
 
 // Create Query
 $wp_query = new WP_Query($arguments);
@@ -35,6 +66,24 @@ $products = get_posts(array(
 <?php the_content(); ?>
 
 <!-- WP Query -->
+<section class="c-products__filter">
+    <div class="container">
+        <form action="<?php the_permalink(); ?>" method="GET" class="" id="filter">
+            <?php if ($terms_kind): ?>
+                <select name="kind" id="kind" title="<?= __("Hover Title", "brightbyte"); ?>">
+                    <option value=""
+                            disabled <?php if (empty($kind_filter)): ?> selected <?php endif; ?>><?= __("Filter", "brightbyte") ?></option>
+                    <?php foreach ($terms_kind as $kind) { ?>
+                        <option value="<?= $kind->term_id ?>" <?php if ($kind_filter == $kind->term_id): ?> selected <?php endif; ?>>
+                            <?= $kind->name ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            <?php endif; ?>
+        </form>
+    </div>
+</section>
+
 <section class="c-products py-3">
     <div class="container">
         <div class="row">
@@ -54,7 +103,8 @@ $products = get_posts(array(
                                 <?php the_excerpt(); ?>
                             </small>
                             <div class="product__cta">
-                                <a href="<?php the_permalink(); ?>" class="btn"><?= __('Lees Meer', 'custom'); ?></a>
+                                <a href="<?php the_permalink(); ?>"
+                                   class="btn"><?= __('Lees Meer', 'brightbyte'); ?></a>
                             </div>
                         </div>
                     </div>

@@ -9,3 +9,4 @@ include_once 'functions/post-types.php';
 include_once 'functions/dashboard.php';
 include_once 'functions/gutenberg.php';
 include_once 'functions/acf.php';
+include_once 'functions/ajax.php';

@@ -6,15 +6,15 @@
 
 function brightbyte_template_path()
 {
-    return Custom_Wrapping::$main_template;
+    return BrightByte_Wrapping::$main_template;
 }
 
 function brightbyte_template_base(): string
 {
-    return Custom_Wrapping::$base;
+    return BrightByte_Wrapping::$base;
 }
 
-class Custom_Wrapping
+class BrightByte_Wrapping
 {
     static $main_template;
 
@@ -24,7 +24,7 @@ class Custom_Wrapping
     {
         self::$main_template = $template;
         self::$base = substr(basename(self::$main_template), 0, -4);
-        if ('index' === self::$base)
+        if ('index' == self::$base)
             self::$base = false;
         $templates = array('base.php');
         if (self::$base)
@@ -34,4 +34,4 @@ class Custom_Wrapping
     }
 }
 
-add_filter('template_include', array('Custom_Wrapping', 'wrap'), 99);
+add_filter('template_include', array('BrightByte_Wrapping', 'wrap'), 99);

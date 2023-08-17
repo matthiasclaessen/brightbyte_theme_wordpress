@@ -1,6 +1,6 @@
 <?php
 
-function custom_styles_and_scripts(): void
+function brightbyte_styles_and_scripts(): void
 {
     // Include CSS File To Header With Cache Buster
     $cacheBuster = filemtime(get_template_directory() . '/build/css/main.css');
@@ -15,7 +15,7 @@ function custom_styles_and_scripts(): void
 
     // Include main.js File To Footer With Cache Buster
     $cacheBuster = filemtime(get_template_directory() . '/build/js/main.js');
-    wp_enqueue_script('scripts.js', get_template_directory_uri() . '/build/js/main.js', array(), $cacheBuster, true);
+    wp_enqueue_script('main', get_template_directory_uri() . '/build/js/main.js', array(), $cacheBuster, true);
 }
 
-add_action('wp_enqueue_scripts', 'custom_styles_and_scripts');
+add_action('wp_enqueue_scripts', 'brightbyte_styles_and_scripts');

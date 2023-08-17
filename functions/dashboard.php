@@ -32,6 +32,9 @@ function remove_dashboard_widgets(): void
 
     // Remove 'Wordfence' Metabox
     remove_meta_box('wordfence_activity_report_widget', 'dashboard', 'side');
+
+    // Removoe Site Health Metabox
+    remove_meta_box('dashboard_site_health', 'dashboard', 'normal');
 }
 
 add_action('admin_init', 'remove_dashboard_widgets');

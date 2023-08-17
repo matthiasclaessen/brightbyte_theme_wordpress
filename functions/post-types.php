@@ -12,11 +12,18 @@ function remove_default_post_type(): void
 
 add_action('admin_menu', 'remove_default_post_type');
 
+function remove_post_tag(): void
+{
+    register_taxonomy('post_tag', array());
+}
+
+add_action('init', 'remove_post_tag');
+
 /**
  * Register CPT Products
  */
 
-function add_cpt_products(): void
+function brightbyte_add_cpt_products(): void
 {
     $labels = array(
         'name' => 'Products',
@@ -51,7 +58,7 @@ function add_cpt_products(): void
     $args = array(
         'label' => 'Product',
         'labels' => $labels,
-        'supports' => array('title', 'thumbnail', 'excerpt', 'revisions'),
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'revisions'),
         'show_in_rest' => true,
         'hierarchical' => false,
         'public' => true,
@@ -72,14 +79,14 @@ function add_cpt_products(): void
     register_post_type('cpt-products', $args);
 }
 
-add_action('init', 'add_cpt_products', 0);
+add_action('init', 'brightbyte_add_cpt_products', 0);
 
 
 /**
  * Register Taxonomy Kind
  */
 
-function add_tax_kind(): void
+function brightbyte_add_tax_kind(): void
 {
     register_taxonomy(
         'tax-products-kind',
@@ -96,4 +103,4 @@ function add_tax_kind(): void
     );
 }
 
-add_action('init', 'add_tax_kind');
+add_action('init', 'brightbyte_add_tax_kind');
