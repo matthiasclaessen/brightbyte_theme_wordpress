@@ -3,11 +3,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 jQuery(document).ready(function ($) {
-    $("#filter").on("change", function () {
-        const data = $("#filter").serialize(),
-            url = "?" + data;
+    console.log("jQuery Loaded!");
 
-        history.pushState(false, false, url);
-        window.location.reload();
+    $("#filter").on("change", function () {
+        const product_kind = $('#filter #kind').val();
+        const url = "?" + product_kind;
+
+        const data = {
+            category: product_kind,
+            action: 'brightbyte_default_ajax_filter'
+        }
+
+        $.ajax({
+            type: 'POST',
+            url: vars['ajaxurl'],
+            data: data,
+            success: function (response) {
+                $('.c-products #products').html(response);
+            }
+        })
     });
 });

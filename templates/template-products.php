@@ -35,13 +35,10 @@ $arguments = array(
 $tax_query = [];
 
 if ($kind_filter) {
-    array_push(
-        $tax_query,
-        array(
-            'taxonomy' => 'tax-products-kind',
-            'field' => 'term_id',
-            'terms' => $kind_filter
-        )
+    $tax_query[] = array(
+        'taxonomy' => 'tax-products-kind',
+        'field' => 'term_id',
+        'terms' => $kind_filter
     );
 }
 
@@ -71,8 +68,8 @@ $products = get_posts(array(
         <form action="<?php the_permalink(); ?>" method="GET" class="" id="filter">
             <?php if ($terms_kind): ?>
                 <select name="kind" id="kind" title="<?= __("Hover Title", "brightbyte"); ?>">
-                    <option value=""
-                            disabled <?php if (empty($kind_filter)): ?> selected <?php endif; ?>><?= __("Filter", "brightbyte") ?></option>
+                    <option value="" <?php if (empty($kind_filter)): ?> selected <?php endif; ?>><?= __("Alles", "brightbyte") ?>
+                    </option>
                     <?php foreach ($terms_kind as $kind) { ?>
                         <option value="<?= $kind->term_id ?>" <?php if ($kind_filter == $kind->term_id): ?> selected <?php endif; ?>>
                             <?= $kind->name ?>
@@ -117,34 +114,34 @@ $products = get_posts(array(
 </section>
 
 <!-- Get Posts -->
-<section class="c-products py-3">
-    <div class="container">
-        <div class="row">
-            <h2>Get Posts</h2>
-        </div>
-        <?php if ($products) : ?>
-            <div class="row" id="products">
-                <?php foreach ($products as $product) : ?>
-                    <?php setup_postdata($product) ?>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="product">
-                            <h2 class="product__name">
-                                <?= $product->product_name ?>
-                            </h2>
-                            <p class="product__description">
-                                <?= $product->product_description ?>
-                            </p>
-                            <small class="product__price">
-                                €<?= $product->product_price ?>
-                            </small>
-                            <div class="product__cta">
-                                <a href="#" class="btn"><?= __('Lees Meer', 'custom'); ?></a>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-            <?php wp_reset_postdata(); ?>
-        <?php endif; ?>
-    </div>
-</section>
+<!--<section class="c-products py-3">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--            <h2>Get Posts</h2>-->
+<!--        </div>-->
+<!--        --><?php //if ($products) : ?>
+<!--            <div class="row" id="products">-->
+<!--                --><?php //foreach ($products as $product) : ?>
+<!--                    --><?php //setup_postdata($product) ?>
+<!--                    <div class="col-md-6 col-lg-4">-->
+<!--                        <div class="product">-->
+<!--                            <h2 class="product__name">-->
+<!--                                --><?php //= $product->product_name ?>
+<!--                            </h2>-->
+<!--                            <p class="product__description">-->
+<!--                                --><?php //= $product->product_description ?>
+<!--                            </p>-->
+<!--                            <small class="product__price">-->
+<!--                                €--><?php //= $product->product_price ?>
+<!--                            </small>-->
+<!--                            <div class="product__cta">-->
+<!--                                <a href="#" class="btn">--><?php //= __('Lees Meer', 'custom'); ?><!--</a>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                --><?php //endforeach; ?>
+<!--            </div>-->
+<!--            --><?php //wp_reset_postdata(); ?>
+<!--        --><?php //endif; ?>
+<!--    </div>-->
+<!--</section>-->

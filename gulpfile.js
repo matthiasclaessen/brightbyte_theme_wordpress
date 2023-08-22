@@ -36,7 +36,7 @@ function scripts() {
 // Watch for changes
 function watch() {
     browserSync.init({
-        proxy: 'http://localhost/bbc_okido/',
+        proxy: 'http://localhost/base_theme_wordpress/',
         notify: false
     });
 

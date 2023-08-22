@@ -8,4 +8,10 @@ if (is_admin()) {
     }
 
     add_action('enqueue_block_editor_assets', 'custom_disable_editor_fullscreen_by_default');
+
+    // Disable code editing in hte Gutenberg editor
+    add_filter('block_editor_settings_all', static function (array $settings): array {
+        $settings['codeEditingEnabled'] = false;
+        return $settings;
+    });
 }

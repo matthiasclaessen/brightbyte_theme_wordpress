@@ -17,7 +17,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
           rel="stylesheet">
 
-    <!-- WP Head -->
     <?php wp_head(); ?>
 </head>
 
@@ -27,6 +26,7 @@
     <?php include brightbyte_template_path(); ?>
 </main>
 <?php get_template_part('templates/core/footer'); ?>
+
 <?php wp_footer(); ?>
 <div class="hidden">
 
