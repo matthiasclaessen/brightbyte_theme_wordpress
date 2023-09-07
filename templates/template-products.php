@@ -135,7 +135,7 @@ $products = get_posts(array(
 <!--                                €--><?php //= $product->product_price ?>
 <!--                            </small>-->
 <!--                            <div class="product__cta">-->
-<!--                                <a href="#" class="btn">--><?php //= __('Lees Meer', 'custom'); ?><!--</a>-->
+<!--                                <a href="#" class="btn">--><?php //= __('Lees Meer', 'brightbyte'); ?><!--</a>-->
 <!--                            </div>-->
 <!--                        </div>-->
 <!--                    </div>-->

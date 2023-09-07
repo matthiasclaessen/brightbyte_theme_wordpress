@@ -4,7 +4,7 @@
  * Removing Dashboard Widgets
  */
 
-function remove_dashboard_widgets(): void
+function brightbyte_remove_dashboard_widgets(): void
 {
     // Remove 'Welcome' Panel
     remove_action('welcome_panel', 'wp_welcome_panel');
@@ -37,7 +37,7 @@ function remove_dashboard_widgets(): void
     remove_meta_box('dashboard_site_health', 'dashboard', 'normal');
 }
 
-add_action('admin_init', 'remove_dashboard_widgets');
+add_action('admin_init', 'brightbyte_remove_dashboard_widgets');
 
 /**
  * Add Custom Dashboard Widget 'Website Info'
@@ -47,10 +47,10 @@ function dashboard_widget_website_info(): void
 {
     global $wp_meta_boxes;
 
-    wp_add_dashboard_widget('dashboard_widget_website_info', 'Website Information', 'custom_dashboard_widget_website_info');
+    wp_add_dashboard_widget('dashboard_widget_website_info', 'Website Information', 'brightbyte_dashboard_widget_website_info');
 }
 
-function custom_dashboard_widget_website_info(): void
+function brightbyte_dashboard_widget_website_info(): void
 {
 ?>
     <ul>
