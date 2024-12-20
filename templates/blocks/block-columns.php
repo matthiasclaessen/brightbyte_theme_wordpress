@@ -31,7 +31,7 @@ $repeater = get_field("block_columns_repeater");
                     $text = $column['text'];
                     $link = $column['link'];
                     $button_type = $column['button_type'];
-                    $image = wp_get_attachment_image($column['image']['ID'], 'full', false, array("title" => get_the_title($column['image']['ID']), 'class' => 'img-fluid'));
+                    $image = wp_get_attachment_image($column['image']['ID'] ?? 1, 'full', false, array("title" => get_the_title($column['image']['ID']), 'class' => 'img-fluid'));
                     ?>
                     <div class="<?= $column_class ?>">
                         <div class="column">
